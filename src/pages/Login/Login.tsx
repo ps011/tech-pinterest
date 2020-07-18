@@ -13,25 +13,23 @@ import {
 import classes from './Login.module.css';
 import { useQuery } from '@apollo/react-hooks';
 import * as Q from '../../graphql/queries';
+import { useLazyQuery } from "@apollo/client";
 
 const Login: React.FC<any> = ({ history, setUserInfo }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const login = () => {
-        // const { loading, error, data } = useQuery(Q.LOGIN_MUTATION);
-        // if(!data) {
-        //     // invalid credentials popup
-        //     history.push('/');
-        // }
-        // if(loading) {
-        //     // show spinner;
-        // }
-        // if(error) {
-        //     // show error message
-        // } 
-        
-        // history.push()
+    const [loginUser, { error, loading, data }] = useLazyQuery(
+        Q.LOGIN_MUTATION(email,password)
+    );
+    // if (error && loading) return <p>Loading ...</p>
+    // if(error) {
+    //    // show message invalid credentials, try again!
+    //    return <div> invalid credentials, try again! </div>;
+    // }
+
+    if(data) {
+        history.push('/home')
     }
 
     const loginAction = (response: any) => {
@@ -67,7 +65,7 @@ const Login: React.FC<any> = ({ history, setUserInfo }) => {
                 <div>
                     <IonInput value={email} placeholder="Enter Email" onIonChange={e => setEmail(e.detail.value!)} clearInput></IonInput>
                     <IonInput value={password} placeholder="Enter Password" onIonChange={e => setPassword(e.detail.value!)} clearInput></IonInput>
-                    <IonButton color="medium" onClick={login}>Continue</IonButton>
+                    <IonButton color="medium" onClick={() => loginUser()}>Continue</IonButton>
                 </div>
                 <GoogleLogin
                     clientId="865958668201-3upung40a7uuidhh47hp34v91rggsgl8.apps.googleusercontent.com"
