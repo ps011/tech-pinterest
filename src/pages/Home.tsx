@@ -11,7 +11,8 @@ import {
   IonBadge,
   IonFab,
   IonFabButton,
-  IonIcon
+  IonIcon,
+  IonButton
 } from '@ionic/react';
 import React from 'react';
 import { add } from 'ionicons/icons';
@@ -25,7 +26,7 @@ const Home: React.FC<RouteComponentProps> = (props) => {
       </IonToolbar>
       <IonContent className="ion-padding">
         React - Ionic
-
+        <IonButton color="medium" onClick={() => props.history.push('./login')}>Login</IonButton>    
         <IonList>
           <IonItem>
             <IonCheckbox slot="start" />

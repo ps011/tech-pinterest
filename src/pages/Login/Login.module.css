@@ -1,0 +1,14 @@
+.googleSignInButton {
+    background-color: 'transparent !important';
+    font-size: '0.975rem !important';
+    min-width: '64px !important';
+    transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !important';
+    line-height: '1.75 !important';
+    border-radius: '4px !important';
+    letter-spacing: '0.02857em !important';
+    text-transform: 'uppercase';
+    color: '#fff !important';
+    /* &:hover {
+        backgroundColor: 'transparent !important',
+    } */
+}

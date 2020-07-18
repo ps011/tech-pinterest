@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { IonApp, IonContent } from '@ionic/react';
 
 /* Core CSS required for Ionic components to work properly */
@@ -24,17 +24,42 @@ import './theme/variables.css';
 import Routes from './routes'
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { ApolloClient, ApolloProvider } from '@apollo/client';
+import makeApolloClient from './auth/apollo';
+import { RouteComponentProps, withRouter } from 'react-router';
 
-const App: React.FC = () => {
+
+const App: React.FC<RouteComponentProps> = ({ history }) => {
+
+  const [client, setClient] = React.useState({});
+  const [userToken, setUserToken] = React.useState('');
+
+  useEffect(() => {
+    fetchSession();
+  }, [userToken])
+
+  const fetchSession = () => {
+    // fetch session
+    const userToken = localStorage.getItem('userToken') || '';
+    setUserToken(userToken);
+    const client = makeApolloClient(userToken);
+    setClient(client);
+  }
+  if (userToken === '') {
+    history.push('/login')
+    return null;
+  }
   return (
-    <IonApp>
-      <IonContent>
-      <Header />
-      <Routes />
-      <Footer />
-    </IonContent>
-  </IonApp>
+    <ApolloProvider client={client as ApolloClient<any>}>
+      <IonApp>
+        <IonContent>
+          <Header />
+          <Routes />
+          <Footer />
+        </IonContent>
+      </IonApp>
+    </ApolloProvider>
   );
-};
+}
 
-export default App;
+export default withRouter(App);
