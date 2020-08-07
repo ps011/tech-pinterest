@@ -3,7 +3,7 @@ import { IonApp, IonContent } from '@ionic/react';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
-
+import 'antd/dist/antd.css';
 /* Basic CSS for apps built with Ionic */
 import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
@@ -53,9 +53,9 @@ const App: React.FC<RouteComponentProps> = ({ history }) => {
     <ApolloProvider client={client as ApolloClient<any>}>
       <IonApp>
         <IonContent>
-          <Header />
+          {/*<Header />*/}
           <Routes />
-          <Footer />
+          {/*<Footer />*/}
         </IonContent>
       </IonApp>
     </ApolloProvider>
