@@ -8,11 +8,11 @@ const Pin = props => {
     return <Card
     height="small" 
     width="small" 
-    background="light-1"
+    background="pin"
     style={{ display: "inline-block", margin: "22px" }}>
     <CardHeader pad="medium">{props.name}</CardHeader>
     <CardBody pad="medium"><Anchor href={props.url} target="_blank" label="View Pin"></Anchor></CardBody>
-    <CardFooter pad={{horizontal: "small"}} background="light-2">   
+    <CardFooter pad={{horizontal: "small", vertical: "xsmall"}} background="light-2">   
     <Button
     icon={<Icons.Favorite color="red" />}
     hoverIndicator

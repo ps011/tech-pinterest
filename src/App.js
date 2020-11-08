@@ -6,7 +6,7 @@ import Routes from "./routes";
 
 function App() {
   return (
-    <Grommet theme={theme}>
+    <Grommet theme={theme} themeMode="dark">
       <Header></Header>
       <Routes></Routes>
     </Grommet>
