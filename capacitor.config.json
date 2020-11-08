@@ -1,7 +1,0 @@
-{
-  "appId": "io.ionic.starter",
-  "appName": "tech-pinterest",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "build"
-}
