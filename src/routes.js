@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import Auth from "./containers/Auth";
 import Dashboard from "./containers/Dashboard";
 import Pins from "./containers/Pins";
 const Routes = () => {
@@ -12,7 +13,7 @@ const Routes = () => {
         <Dashboard></Dashboard>
       </Route>
       <Route path="/login">
-        <p>Login Works!!</p>
+        <Auth></Auth>
       </Route>
       <Route exact path="/">
         <Redirect
